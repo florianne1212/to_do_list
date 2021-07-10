@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "todoList",
-    "slug": "todoList",
+    "name": "todoList_v1",
+    "slug": "todolist_v1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

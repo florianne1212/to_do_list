@@ -1,7 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
+import styled from "styled-components/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const Task = (props) => {
+export default function Task(props, { index , completeTask }) {
 
     return (
         <View style={styles.item}>
@@ -9,11 +11,25 @@ const Task = (props) => {
                 <View style={styles.square}></View>
                 <Text style={styles.text}>{props.text}</Text>
             </View>
-            <View style={styles.circular}></View>
+			<IconContainer key={index} onPress={() => completeTask(index)}>
+					<MaterialIcons name="delete" sizr={24} color="#ce4257" />
+			</IconContainer>
+            {/* <View style={styles.circular}></View> */}
         </View>
        
-    )
+    );
 }
+
+const IconContainer = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 15px;
+
+  height: 40px;
+
+  border-radius: 10px;
+`;
 
 const styles = StyleSheet.create({
     item: {
@@ -52,5 +68,3 @@ const styles = StyleSheet.create({
 
     },
 });
-
-export default Task;

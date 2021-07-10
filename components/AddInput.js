@@ -7,6 +7,12 @@ import styled from "styled-components/native";
 export default function AddInput({submitHandler}) {
 
 	const [task, setTask] = useState("");
+	const [valueTask, setvalueTask] = useState();
+	const handleAddTask = () => {
+		// Keyboard.dismiss();
+		//setTaskItems([...taskItems, task])
+		setvalueTask(null);
+	}
 
 	return(
 		<ComponentContainer>
@@ -14,11 +20,12 @@ export default function AddInput({submitHandler}) {
 			behavior={Platform.OS === "ios" ? "padding" : "height"}
 			>
 			<InputContainer>
-				<Textadd placeholder={"Write a task"} onChangeText={text => setTask(text)} />
+				<Textadd placeholder={"Write a task"} value={valueTask} onChangeText={text => setTask(text)} />
 			</InputContainer>
 			<SubmitButton 
 					onPress={() => {
 						setTask(submitHandler(task));
+						handleAddTask();
 					}}
 			>
 					<Text>+</Text>
