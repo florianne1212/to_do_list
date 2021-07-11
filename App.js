@@ -2,18 +2,21 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, CheckBox, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
-
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export default function App() {
+
 
   const [task, setTask] = useState();
 
   const [taskItems, setTaskItems] = useState([]);
 
+  let myHeight = 50;
+
   const handleAddTask = () => {
     Keyboard.dismiss();
 	setTaskItems([...taskItems, task])
-	setSelection(false);
+	setSelection(true);
     setTask(null);
   }
 
@@ -25,9 +28,6 @@ export default function App() {
 
   const [isSelected, setSelection] = useState(false);
 
-  const handleOnChange = () => {
-    setSelection(!isSelected)
-  };
 
   return (
     <View style={styles.container}>
@@ -43,19 +43,17 @@ export default function App() {
 				<View style={styles.item}>
 				<View style={styles.itemLeft}>
 					<View > 
-						<CheckBox
-							value={isSelected}
-							onValueChange={setSelection}
-							onPress={() => handleOnChange()}
-							style={styles.checkbox}
-						/> 
+					<BouncyCheckbox
+						size={25}
+						fillColor="#188078"
+						iconStyle={{ borderColor: "#188078" }}
+					/>
 					</View>
-					<Text style={styles.text}>{item}</Text>
 				</View>
+				<Text style={styles.text}>{item}</Text>
 				<TouchableOpacity key={index} onPress={() => completeTask(index)}>
-						<MaterialIcons name="delete" sizr={50} color="#188078" />
+						<MaterialIcons name="delete" size={25} color="#188078" />
 				</TouchableOpacity>
-				{/* <View style={styles.circular}></View> */}
 				</View>
             ) 
           })
@@ -84,7 +82,8 @@ export default function App() {
 const styles = StyleSheet.create({
 	item: {
 		margin: "auto",
-		height: 50,
+		marginLeft: 10,
+		maxHeight: "80%",
 		width: "95%",
         backgroundColor: '#FFF',
         padding: 15,
@@ -93,6 +92,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
 		marginBottom: 20,
+		overflow: "scroll"
     },
     itemLeft: {
         flexDirection: 'row',
@@ -100,8 +100,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     text: {
-		margin: 10,
-        maxWidth: '60%'
+		marginTop: "auto",
+		width: "90%",
+		height: "auto",
+		
+		fontSize: "20px",
+		marginRight: "20px",
+       
     },
   container: {
     flex: 1,
@@ -119,18 +124,20 @@ const styles = StyleSheet.create({
 	fontWeight: 'bold'
   },
   items: {
-    marginTop: 30,
+	marginTop: 30,
+	marginBottom: 85,
   },
   writeTasksWrapper : {
+	width: "100%",
+	backgroundColor: "#188078",
     position: "absolute",
-    bottom: 60,
-	with: "100%",
+    bottom: 40,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center"
   },
   input : {
-	margin: 10,
+	margin: 1,
     paddingVertical: 15,
 	paddingHorizontal: 15,
 	height: 50,
