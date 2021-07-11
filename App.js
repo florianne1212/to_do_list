@@ -1,7 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, CheckBox, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { StyleSheet, Text, View,ScrollView, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export default function App() {
@@ -36,6 +36,7 @@ export default function App() {
 
       </View>
 
+	  <ScrollView>
       <View style={styles.items}>
         {
           taskItems.map((item, index) => {
@@ -59,6 +60,7 @@ export default function App() {
           })
         }
       </View>
+	  </ScrollView>
 
       <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -74,7 +76,6 @@ export default function App() {
         </TouchableOpacity>
 
       </KeyboardAvoidingView>
-
     </View>
   );
 }
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		maxHeight: "80%",
 		width: "95%",
+		maxWidth: "95%",
         backgroundColor: '#FFF',
         padding: 15,
         borderRadius: 20,
@@ -101,62 +103,63 @@ const styles = StyleSheet.create({
     },
     text: {
 		marginTop: "auto",
-		width: "90%",
+		width: "75%",
 		height: "auto",
-		
-		fontSize: "20px",
-		marginRight: "20px",
-       
+		fontSize: 20,
+		marginRight: 20
     },
-  container: {
-    flex: 1,
-    backgroundColor: '#188078',
-
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20
-
-  },
-  sectionTitle: {
-	color: '#FFFFFF',
-    fontSize: 24,
-	fontWeight: 'bold'
-  },
-  items: {
-	marginTop: 30,
-	marginBottom: 85,
-  },
-  writeTasksWrapper : {
-	width: "100%",
-	backgroundColor: "#188078",
-    position: "absolute",
-    bottom: 40,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center"
-  },
-  input : {
-	margin: 1,
-    paddingVertical: 15,
-	paddingHorizontal: 15,
-	height: 50,
-    width: 250,
-    backgroundColor: "#FFF",
-    borderRadius: 20,
-    borderColor: "#C0C0C0",
-    borderwidth: 1
-  },
-  addWrapper: {
-    width: 60,
-    height: 50,
-    backgroundColor: "#FFF",
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#C0C0C0",
-    borderwidth: 1
-  },
-  addText: {}
+	container: {
+		flex: 1,
+		overflow: "scroll",
+		backgroundColor: '#188078',
+	
+	  },
+	  tasksWrapper: {
+		paddingTop: 80,
+		paddingHorizontal: 20
+	
+	  },
+	  sectionTitle: {
+		color: '#FFFFFF',
+		fontSize: 24,
+		fontWeight: 'bold'
+	  },
+	  items: {
+		marginTop: 30,
+		marginBottom: 85,
+	  },
+	  writeTasksWrapper : {
+		width: "100%",
+		backgroundColor: "#188078",
+		position: "absolute",
+		height: 90,
+		bottom: 0,
+		flexDirection: "row",
+		justifyContent: "space-around",
+		alignItems: "center"
+	  },
+	  input : {
+		margin: 1,
+		marginBottom: 5,
+		paddingVertical: 15,
+		paddingHorizontal: 15,
+		height: 50,
+		width: 250,
+		backgroundColor: "#FFF",
+		borderRadius: 20,
+		borderColor: "#C0C0C0",
+		borderwidth: 1
+	  },
+	  addWrapper: {
+		marginBottom: 5,
+		width: 60,
+		height: 50,
+		backgroundColor: "#FFF",
+		borderRadius: 20,
+		justifyContent: "center",
+		alignItems: "center",
+		borderColor: "#C0C0C0",
+		borderwidth: 1
+	  },
+	  addText: {}
 });
-
