@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createStore } from \"redux\";\ninport;","map":{"version":3,"sources":["/home/user42/redux_int_the_making/redux/store.js"],"names":["createStore","inport"],"mappings":"AAAA,SAAQA,WAAR,QAA0B,OAA1B;AACAC,MAAM","sourcesContent":["import {createStore} from \"redux\";\ninport "]},"metadata":{},"sourceType":"module"}
